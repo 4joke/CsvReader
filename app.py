@@ -15,14 +15,14 @@ def calculate(file, comment):
     for word in comment:
         string+=word + " "
     with open(file, newline='', encoding='utf-8') as csvfile:
-        scvreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        scvreader = csv.reader(csvfile, delimiter=';', quotechar='|')
         if args.comment:
             position = -1
         elif args.category:
             position = 2
         for row in scvreader:
             if row[position] == string.strip():
-                summa += float(row[3].replace("\"", ''))
+                summa += float(row[3].replace("\"", '').replace(",", ''))
     print(summa)
 
 
